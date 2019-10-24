@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>For_the_exam</title>
+</head>
+<body>
+  {% if user.is_authenticated %}
+  <h2>{{user.username}} 님</h2>
+  <a href="{% url 'accounts:logout' %}">로그아웃</a>
+  <a href="{% url 'posts:create' %}">글쓰기</a>
+  {% else %}
+  <a href="{% url 'accounts:signup' %}">회원가입</a>
+  <a href="{% url 'accounts:login' %}">로그인</a>
+  {% endif %}
+  {% block body %}
+  {% endblock %}
+</body>
+</html>

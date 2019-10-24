@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h1>index</h1>
+  {% for post in posts %}
+    <a href="{% url 'posts:detail' post.id %}"><h3>{{post.id}}, {{post.title}}, {{post.content}}</h3></a>
+  {% endfor %}
+{% endblock %}
