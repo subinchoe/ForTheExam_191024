@@ -96,3 +96,22 @@ def like(request, id):
 
 
     return redirect('posts:detail', id)
+
+
+@login_required
+def comment_delete(request, post_id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.method == "POST":
+        if request.user == comment.user:
+            comment.delete()
+            return redirect('posts:detail' post_id)
+
+@login_required
+def like(request, id):
+    post = get_object_or_404(Post, id=id):
+    user = request.user
+    if post.like_users.all.filter(id=user.id):
+        post.like_users.remove(user)
+    else:
+        post.like_users.add(user)
+    return redirect()
